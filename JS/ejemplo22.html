@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        var menu = "Menu: "+
+                   "\n1. Suma"+
+                   "\n2. Resta"+
+                   "\n3. Salir";
+        do 
+        {
+            
+            var opcion = Number(prompt(menu));
+            if(opcion == 1) 
+            {
+                var num1 = Number(prompt("Escriba el Número 1"));
+                var num2 = Number(prompt("Escriba el Número 2"));
+                var total = num1 + num2;
+                alert("Suma: "+total)
+            }
+            else if(opcion == 2)
+            {
+                var num1 = Number(prompt("Escriba el Número 1"));
+                var num2 = Number(prompt("Escriba el Número 2"));
+                var total = num1 - num2;
+                alert("Resta: "+total)
+            }     
+            else if( opcion == 3)       
+            {
+                alert("Saliendo del Sistema")
+                break;
+            }
+                
+            else
+                alert("Opción no valida")
+
+        }
+        while (true);
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Libreria de CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    
+    <div class="container">   
+        <div class="row">
+
+        </div> 
+    </div>
+
+    <script>
+
+    var num = Number(prompt("Numero de Tabla"));
+    var row = document.getElementsByClassName("row")[0];
+
+    for(i = 1; i <= num; i++)
+    {
+        var div = document.createElement("div");
+        div.setAttribute("class", "col-4 col-sm-3");
+        div.textContent = "Tabla del " + i;
+        row.append(div);
+    }
+
+    </script>
+
+</body>
+</html>

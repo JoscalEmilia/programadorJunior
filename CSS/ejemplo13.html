@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .circulos {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: relative;
+            border-radius: 25px;
+            position: relative;
+        }
+        
+        #d1
+        {            
+            animation: example 8s infinite;
+        }
+        #d2
+        {            
+            animation: example 5s infinite;
+        }
+        #d3
+        {            
+            animation: example 10s infinite;
+        }
+        #d4
+        {            
+            animation: example 3s infinite;
+        }  
+        
+        #d5
+        {            
+            animation: example 2s infinite;
+        }
+        #d6
+        {            
+            animation: example 9s infinite;
+        }
+        #d7
+        {            
+            animation: example 4s infinite;
+        }
+        #d8
+        {            
+            animation: example 7s infinite;
+        }          
+
+        #d1:hover
+        {   
+            background-color: purple;         
+            animation-play-state: paused;            
+        }
+        #d2:hover
+        {   
+            background-color: purple;         
+            animation-play-state: paused;            
+        }
+        #d3:hover
+        {   
+            background-color: purple;         
+            animation-play-state: paused;            
+        }
+        #d4:hover
+        {            
+            background-color: purple;
+            animation-play-state: paused;            
+        }          
+
+        @keyframes example {
+            0%   {background-color:red; left:0px; top:0px;}
+            25%  {background-color:yellow; left: 90vw; top:0px;}
+            50%  {background-color:blue; left: 90vw; top: 60vh;}
+            75%  {background-color:green; left:0px; top:60vh;}
+            100% {background-color:red; left:0px; top: 0px;}
+        }      
+        
+        .login
+        {
+            width: 40%;
+            margin-left: 10%;
+            background-color: royalblue;
+            border-radius: 15px;
+            padding: 15px;
+            color: white;
+            font-family: calibri;
+        }
+
+        h2
+        {
+            animation: CambioLetra 1s infinite;
+        }
+
+        @keyframes CambioLetra {
+            0%   {font-family: calibri;}
+            25%  {font-family: verdana;}
+            50%  {font-family: arial;}
+            75%  {font-family: times new roman;}
+            100% {font-family: calibri;}
+        }  
+
+    </style>
+
+    <div id="d1" class="circulos"></div>
+    <div id="d2" class="circulos"></div>
+    <div id="d3" class="circulos"></div>
+    <div id="d4" class="circulos"></div>
+
+    <div id="d5" class="circulos"></div>
+    <div id="d6" class="circulos"></div>
+    <div id="d7" class="circulos"></div>
+    <div id="d8" class="circulos"></div>
+
+
+
+    <div class="login">
+        <h2>Inicio de Sesión</h2>
+        <hr>
+        <form style="padding: 15px;">
+            <input type="text" name="Username" value="" placeholder="Escriba su Usuario" />
+            <br/><br/>
+            <input type="password" name="Password" value="" placeholder="Escriba su Password" />
+            <br/><br/>
+            <button type="button">Iniciar Sesión</button>
+        </form>
+    </div>
+
+</body>
+</html>

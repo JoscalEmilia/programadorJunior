@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Libreria de CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5332cfc41d.js" crossorigin="anonymous"></script>
+
+    
+    <!-- Libreria de Javascript -->
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+
+    <style>
+        #Nave
+        {
+            position: absolute;
+
+            width: 70px;
+            height: 70px;
+
+            background-image: url("nave.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        #Panel
+        {
+            position: absolute;
+            bottom: 100px;
+            right: 100px;
+
+            border-radius: 15px;
+            width: 150px;
+            height: 90px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="Nave"></div>
+
+
+    <div id="Panel" class="row">
+        <div class="col-4">
+            <button id="home" class="btn btn-primary"><i class="fas fa-home"></i></button>            
+        </div>
+
+        <div class="col-4">
+            <button id="forward" class="btn btn-primary"><i class="fas fa-arrow-circle-up"></i></button>
+        </div>
+
+        <div class="col-4">
+            <button id="save" class="btn btn-primary"><i class="fas fa-save"></i></button>
+        </div>
+
+        <div class="col-4">
+            <button id="left" class="btn btn-primary"><i class="fas fa-arrow-circle-left"></i></button>
+        </div>
+
+        <div class="col-4">
+            <button id="backward" class="btn btn-primary"><i class="fas fa-arrow-circle-down"></i></button>
+        </div>        
+
+        <div class="col-4">
+            <button id="right" class="btn btn-primary"><i class="fas fa-arrow-circle-right"></i></button>
+        </div>
+
+
+
+    </div>
+
+    <script>
+
+        var Nave = document.getElementById("Nave");
+        var positiony, positionx;
+
+        if(localStorage.getItem("x") == null)
+        {
+            console.log("Posiciones Cargadas");
+            positiony = localStorage.getItem("y");
+            positionx = localStorage.getItem("x");
+        }
+        else
+        {        
+            console.log("Posiciones Limpias"); 
+            positiony = 10;
+            positionx = 10;
+        }
+        
+        Nave.style.bottom = positiony+"vh";
+        Nave.style.left = positionx+"vw";
+
+        var ArrowUp = document.getElementById("forward");
+        var ArrowDown = document.getElementById("backward");
+        var ArrowLeft = document.getElementById("left");
+        var ArrowRight = document.getElementById("right");        
+        var Home = document.getElementById("home")
+        var Save = document.getElementById("save");
+
+        ArrowUp.addEventListener("click", forward);
+        ArrowDown.addEventListener("click", backward);
+        ArrowLeft.addEventListener("click", turnLeft);
+        ArrowRight.addEventListener("click", turnRight);
+        Home.addEventListener("click", ToHome);
+        Save.addEventListener("click", SaveXY);
+
+
+
+        function forward()
+        {   
+            positiony += 1
+            console.log(positiony);
+            Nave.style.bottom = positiony+"vh";
+        }
+
+        function backward()
+        {   
+            positiony -= 1
+            console.log(positiony);
+            Nave.style.bottom = positiony+"vh";
+        }   
+        
+        function turnLeft()
+        {   
+            positionx -= 1
+            console.log(positionx);
+            Nave.style.left = positionx+"vw";
+        }
+
+        function turnRight()
+        {   
+            positionx += 1
+            console.log(positionx);
+            Nave.style.left = positionx+"vw";
+        }     
+        
+        function ToHome()
+        {
+            var positiony = 10;
+            var positionx = 10;            
+            console.log("A casa");
+            Nave.style.bottom = positiony+"vh";
+            Nave.style.left = positionx+"vw";
+        }
+
+        function SaveXY()
+        {
+            console.log("Guardado");
+            localStorage.setItem("y", positiony)
+            localStorage.setItem("x", positionx)
+        }
+    </script>
+</body>
+</html>

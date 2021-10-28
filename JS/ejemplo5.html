@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="Number" id="Numero1" />
+    <br />
+    <input type="Number" id="Numero2" />
+
+    <button>Sumar</button>
+    <button>Resta</button>
+    <button>Multiplicación</button>
+    <button>División</button>
+
+    <p></p>
+
+    <script>
+        var Operaciones = document.getElementsByTagName("button");
+
+        Operaciones[0].addEventListener("click", suma);
+        Operaciones[1].addEventListener("click", resta);
+        Operaciones[2].addEventListener("click", multiplicacion);
+        Operaciones[3].addEventListener("click", division);
+        
+        function suma()
+        {
+            let num1 = Number(document.getElementById('Numero1').value);
+            let num2 = Number(document.getElementById('Numero2').value);
+            document.querySelector("p").textContent = "Suma: "+ (num1+num2);
+        }
+
+        function resta()
+        {
+            let num1 = Number(document.getElementById('Numero1').value);
+            let num2 = Number(document.getElementById('Numero2').value);
+            document.querySelector("p").textContent = "Resta: "+ (num1-num2);
+        }
+
+        function multiplicacion()
+        {
+            let num1 = Number(document.getElementById('Numero1').value);
+            let num2 = Number(document.getElementById('Numero2').value);
+            document.querySelector("p").textContent = "Multiplicación: "+ (num1*num2);
+        }     
+        
+        function division()
+        {
+            let num1 = Number(document.getElementById('Numero1').value);
+            let num2 = Number(document.getElementById('Numero2').value);
+            document.querySelector("p").textContent = "División: "+ (num1/num2);
+        }             
+        
+    </script>
+</body>
+</html>

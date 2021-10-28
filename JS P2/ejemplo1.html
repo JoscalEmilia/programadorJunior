@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- H1 N°1 - Indice 0 -->
+    <h1 id="h1">Hola Mundo!</h1>    
+    <script>
+        
+        var h1 = document.getElementById('h1');
+        h1.style.color = "red";
+
+    </script>
+
+    <!-- H1 N°2 - Indice 1 -->
+    <h1 id="h2" class="SuperParrafo">Hola Mundo!</h1>    
+    <script>
+        
+        var h1s = document.getElementsByTagName('h1');
+        h1s[0].style.fontFamily = 'Calibri'
+        h1s[1].style.fontFamily = 'Arial'
+
+    </script>
+
+    <style>
+        #h2 
+        {
+            color: blue;
+        }
+
+        .SuperParrafo
+        {
+            color: tomato;
+        }
+    </style>
+
+    <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores optio aliquid illum dolore aperiam, quos, corporis rem deserunt harum perspiciatis culpa temporibus magni. Necessitatibus tempora vel at mollitia non ullam?
+    </p>
+
+    <p class="SuperParrafo">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores optio aliquid illum dolore aperiam, quos, corporis rem deserunt harum perspiciatis culpa temporibus magni. Necessitatibus tempora vel at mollitia non ullam?
+    </p>
+
+    <p class="SuperParrafo">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores optio aliquid illum dolore aperiam, quos, corporis rem deserunt harum perspiciatis culpa temporibus magni. Necessitatibus tempora vel at mollitia non ullam?
+    </p>
+
+    <select>
+        <option></option>
+        <option value="Calibri">Calibri</option>
+        <option value="Arial">Arial</option>
+    </select>
+    <button id="Aumentar">+</button>
+    <button id="Disminuir">-</button>
+
+    <script>
+        //var p = document.getElementsByTagName('p');  ;
+        var p = document.getElementsByClassName('SuperParrafo');
+        var tamanoFuente = 14;
+        
+        var select = document.querySelector("select")
+        var botonMas = document.getElementById("Aumentar")
+        var botonMen = document.getElementById("Disminuir")
+        
+        select.addEventListener('change', cambiarFuente);
+        botonMas.addEventListener('click', aumentarFuente);
+        botonMen.addEventListener('click', disminuirFuente);
+
+        function cambiarFuente()
+        {   
+            for(i = 0; i < p.length; i++)
+                p[i].style.fontFamily = select.value;
+        }
+
+        function aumentarFuente()
+        {
+            tamanoFuente++;  
+            for(i = 0; i < p.length; i++)          
+                p[i].style.fontSize = tamanoFuente+"px";
+        }      
+        
+
+        function disminuirFuente()
+        {
+            tamanoFuente--;
+            for(i = 0; i < p.length; i++)
+                p[i].setAttribute("style", "fontSize: " + tamanoFuente + "px;");
+        }              
+
+    </script>
+</body>
+</html>

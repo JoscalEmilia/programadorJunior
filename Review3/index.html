@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Libreria de CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5332cfc41d.js" crossorigin="anonymous"></script>
+
+    
+    <!-- Libreria de Javascript -->
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    
+    <style>
+        .bg-light
+        {
+            border-radius: 10px;
+            padding: 10px;
+            margin-right: 20px;
+        }
+
+    </style>
+
+</head>
+<body class="bg-primary">
+    
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-8 bg-light mt-5">
+
+                <h1>Tabla de Multiplicar</h1>
+                
+                <hr>
+
+                <div id="Fillme" class="row">
+                </div>
+
+            </div>
+             
+            <div class="col-3 bg-light mt-5">
+
+                <table class="mt-5 table table-bordered" style="width: 100%;">
+                    <tr><td>Escriba el Numero de la tabla: </td></tr>
+                    <tr><td><input type="number" id="num" value="" /></td></tr>
+                    <tr><td><button class="btn btn-outline-primary" id="btnAdd">Crear Tabla</button></td></tr>
+                </table>
+
+                <button class="btn btn-outline-danger" id="btnDel">Eliminar Historial</button>
+                <a href=""><button class="btn btn-outline-success" >Refrescar Historial</button></a>
+                
+                <div id="divHistorial">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        var Historial = "";
+        var divHistorial = document.getElementById("divHistorial");
+
+        if(localStorage.getItem("Historial") == null)
+        {
+            Historial = ""
+            alert("Historial Limpio");
+        }
+        else
+        {
+            Historial = localStorage.getItem("Historial");    
+            divHistorial.innerHTML = Historial;
+        }
+
+        
+        
+        
+        var num = document.getElementById('num');
+        var Fillme = document.getElementById('Fillme');
+
+        var btnAdd = document.getElementById('btnAdd');
+        var btnDel = document.getElementById('btnDel');
+
+        btnAdd.addEventListener("click", CrearTablas)
+        btnDel.addEventListener("click", LimpiarHistorial)
+
+        function LimpiarHistorial()
+        {
+            localStorage.removeItem("Historial");
+        }
+
+        function CrearTablas()
+        {
+            Fillme.innerHTML = "";
+            for(var x = 1; x <= num.value; x++)
+            {
+                var div = document.createElement("div");
+                div.setAttribute("class", "col-4");
+                div.append(AñadirTabla(x));
+                Fillme.append(div);
+            }
+
+            Historial += " - " + num.value;
+            localStorage.setItem("Historial", Historial);
+
+        }
+
+
+        function AñadirTabla(numero)
+        {            
+            var tabla = document.createElement("table");
+            tabla.setAttribute("class", "table table-bordered table-hover mt-4");
+            tabla.setAttribute("style", "width: 60%; margin-left: 20%")
+            
+            var tr = document.createElement("tr");
+            var th = document.createElement("th");
+
+            var total = 0;
+
+            th.setAttribute("colspan", "4");
+            th.textContent = "Tabla del " + numero;
+
+            tr.append(th);
+            tabla.append(tr);
+
+            for (var i = 1; i <= 10 ; i++) 
+            {                
+                var tr = document.createElement("tr"); 
+
+                var td = document.createElement("td");
+                td.innerHTML =  '<a onclick="DeleteRow(this)"><i class="fas fa-trash-alt"></i></a>';
+                tr.append(td)
+
+                var td = document.createElement("td");
+                td.textContent =  numero + " x " + i;
+                tr.append(td)
+
+                var td = document.createElement("td");            
+                td.textContent = (i * numero);                
+                tr.append(td)   
+                
+                var td = document.createElement("td"); 
+                
+                var ParoImpar = ( (i * numero)%2 == 0) ? "Par" : "Impar";
+                var Color = ( (i * numero)%2 == 0) ? "tomato" : "green";
+                td.textContent = ParoImpar; 
+                td.setAttribute("style", "color: "+ Color);
+                tr.append(td)       
+
+                total += Number(i * numero);    
+                tabla.append(tr);
+                
+            }
+
+            var tr = document.createElement("tr");
+
+            var td = document.createElement("td");
+            td.setAttribute("colspan", "3")
+            td.textContent = " Total ";
+            tr.append(td)
+
+            var td = document.createElement("td");            
+            td.textContent = total;                
+            tr.append(td)               
+            tabla.append(tr);
+
+            return tabla;
+        }
+
+        function DeleteRow(a)
+        {     
+            if(confirm('Seguro que desea eliminar la fila'))       
+            {
+                td = a.parentNode;
+                tr = td.parentNode;
+                tr.remove();
+            }
+        }
+
+    </script>
+
+</body>
+</html>

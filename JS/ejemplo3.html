@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="mydiv"></div>
+
+    <script>
+
+        document.getElementById('mydiv').innerHTML = "<h1>Hola Mundo</h1><hr/><p>Este es mi ejemplo</p>";
+        document.writeln("Hola Mundo <hr/>");
+        
+        //document.writeln("Hola Mundo 2");
+
+        /**
+            alert("Hola Mundo1");
+            console.log(" Hola mundo en la Consola ");
+        **/
+
+        var Variable1 = 10;
+        document.write(typeof("John")+"<br/>")     // Returns "string"
+        document.write(typeof(3.14)+"<br/>")       // Returns "number"
+        document.write(typeof(true)+"<br/>")       // Returns "boolean"
+        document.write(typeof(false)+"<br/>")      // Returns "boolean"
+        document.write(typeof(Variable1)+"<br/>")          // Returns "undefined" (if x has no value)
+
+    </script>
+
+</body>
+</html>

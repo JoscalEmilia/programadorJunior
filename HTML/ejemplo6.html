@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    form
+    {
+        font-family: Calibri;
+        background-image: linear-gradient(white, tomato);
+        background-size: cover;
+        border-radius: 10px;
+        padding: 10px;
+    }
+</style>
+<body>
+    <form style="width: 50%;">
+        <h1>Formulario de Registro</h1>
+        <hr />
+        <p><b>Nombre del Participante:</b></p>
+        <input type="text" name="Fullname" />
+
+        <p><b>Fecha de Nacimiento:</b></p>
+        <input type="date" name="Birthday" />    
+        
+        <p><b>Describete a ti mismo:</b></p>
+        <textarea name="Description"></textarea>
+
+        <p><b>Sexo:</b></p>
+        <select name="Sex">
+            <option value="Hombre">Hombre</option>
+            <option value="Mujer">Mujer</option>
+        </select>
+        
+
+        <p><b>Curso a Inscribirse:</b></p>
+        <input type="radio" name="Course" value="Programación con Javascript" /> Programación con Javascript          
+        <input type="radio" name="Course" value="Programación con Python"/>    Programación con Python        
+        
+        <p>
+            <input type="checkbox" name="Terms" value="Sí" />
+            <b>Acepta los terminos de Condición de Uso:</b>
+        </p>
+
+        <hr/>
+        <input type="submit" value="Enviar Datos">
+        <input type="reset" value="Limpiar los Datos">
+    </form>
+</body>
+</html>

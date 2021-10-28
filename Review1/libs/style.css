@@ -1,0 +1,61 @@
+body
+{
+    background-image: url("../imagenes/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100vh;
+    background-attachment: fixed;
+    font-family: Calibri;
+}
+
+#menu
+{
+    border-radius: 5px;
+    width: 4vw;
+    margin-left: 5vw;
+    margin-top: 5vh;   
+}
+
+#menu:hover
+{
+    width: 5vw;  
+}
+
+#opciones
+{
+    background-color: white;
+    padding: 10px;
+    width: 10vw;
+    margin-left: 5vw;
+    padding-left: 25px;
+    display: none;
+}
+
+a
+{
+    text-decoration: none;
+    color: #000;
+}
+
+header
+{
+    position: absolute;
+    z-index: 10;
+}
+
+main
+{
+    width: 80%;
+    margin-left: 10%;
+    color: white;  
+    background-color: rgba(0, 0, 0, 0.3);  
+    border-radius: 25px;
+    padding: 25px;
+    height: 80vh;
+    position: absolute;
+    margin-top: 5vh;
+}
+
+h1
+{
+    text-align: center;
+}

@@ -1,0 +1,14 @@
+{
+    "Nombre" : "José Manuel",    
+    "Apellidos" : "Calderón González",
+    "Edad" : 31,
+    "Estado Civil" : "Casado", 
+
+    "Carro" : 
+    {
+        "Marca" : "Hyundai",
+        "Modelo" : "Accent",
+        "Año" : 2005
+    }
+
+}

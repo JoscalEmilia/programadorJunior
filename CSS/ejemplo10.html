@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <style>
+        .notificacion {
+            width: 300px;
+            height: 100px;
+            padding: 15px;
+            background-color: yellow;
+            box-shadow: 10px 10px;
+            position: absolute;
+        }
+
+        .n1
+        {
+            top: 50px; right: 50px;
+            transform: translate(-50px, 50px);
+        }
+
+        .n2
+        {
+            top: 50px; left: 50px;
+            transform: rotate(90deg);
+        }
+
+        .n3
+        {
+            bottom: 50px; right: 50px;
+            transform: scale(0.5);
+        }
+
+        .n4
+        {
+            bottom: 50px; left: 50px;
+        }        
+
+    </style>
+
+    <div id="n1" class="notificacion n1" onclick="$(this).hide(2000)">
+        <b>Notificación:</b>
+        <hr/>
+        <p>Esta es una notificación</p>
+    </div>
+    <input type="number" value="90" min="0" max="360" onchange="rotar(this.value)" />
+    <script>
+        function rotar(grados)
+        {
+            n2 = document.getElementById('n2');
+            n2.style.transform = "rotate("+grados+"deg)";
+        }
+    </script>
+
+    <div id="n2" class="notificacion n2" onclick="$(this).hide(2000)">
+        <b>Notificación:</b>
+        <hr/>
+        <p>Esta es una notificación</p>
+    </div>
+
+    <div class="notificacion n3" onclick="$(this).hide(2000)">
+        <b>Notificación:</b>
+        <hr/>
+        <p>Esta es una notificación</p>
+    </div>
+
+    <div class="notificacion n4" onclick="$(this).hide(2000)">
+        <b>Notificación:</b>
+        <hr/>
+        <p>Esta es una notificación</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <table>
+        <tr>
+            <td>
+                <b>Grados fahrenheit </b>
+                <br/>
+                <input type="number" id="field1" step="0.1" value="0" onchange="toCelsius(this.value)" onkeyup ="toCelsius(this.value)" />
+            </td>
+            <td>=</td>
+            <td>
+                <b>Grados Celcius </b>
+                <br/>
+                <input type="number" id="field2" step="0.1" />
+            </td>            
+        </tr>
+    </table>
+
+    <script>
+        function toCelsius(fahrenheit) 
+        {
+            var convert = (5/9) * (fahrenheit-32);
+            document.getElementById('field2').value = convert;
+        }
+        toCelsius(document.getElementById('field1').value)
+    </script>
+</body>
+</html>

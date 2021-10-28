@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="libs/style.css">
+        <style>
+            table
+            {
+                width: 60%;
+                margin-left: 20%;
+                border-radius: 25px;
+                background-color: white;
+                padding: 25px;
+            }
+
+            td
+            {
+                text-align: left;
+                width: 50%;
+                font-size: 25px;
+                padding: 10px;
+                color: black
+            }
+            td img
+            {
+                width: 80%;
+                margin-left: 10%;
+                border-radius: 15px;
+            }
+            p
+            {
+                
+                text-align: center;
+            }
+            input[type='text'], input[type='email'], textarea
+            {
+                width: 100%;
+            }  
+            
+            td[rowspan="3"]
+            {
+                vertical-align: top;
+            }
+
+            button
+            {
+                background-color: white ;
+                border-radius: 50px;
+                height: 40px;
+                width: 180px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="content">
+
+            <header>
+                <img id="menu" src="imagenes/menu.png" />
+                <div id="opciones">
+                    <a href="index.html"><p>Inicio</p></a>
+                    <a href="servicios.html"><p>Servicios</p></a>
+                    <a href="conocenos.html"><p>Conócenos</p></a>
+                    <a href="contactanos.html"><p>Contactenos</p></a>
+                </div>
+            </header>
+
+            <main>
+                <marquee><h1>Restaurante Emilia</h1></marquee>
+                <hr>
+                <div>
+                    <table>
+                        <tr>
+                            <td colspan="2"><h2>Contactanos que nos gustaría saber de ti</h2></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Nombre<br>
+                                <input type="text" value="" />
+                            </td>   
+                            <td rowspan="3">
+                                Mensaje<br>
+                                <textarea rows="10"></textarea>
+                                <button> Enviar al Contacto</button>
+                            </td>                                                                                  
+                        </tr>
+                        <tr>
+                            <td>
+                                Correo Electrónico<br>
+                                <input type="email" value="" />
+                            </td> 
+                        </tr>                        
+                        <tr>
+                            <td>
+                                Teléfono<br>
+                                <input type="text" value="" />
+                            </td> 
+                        </tr>                        
+                    </table>
+
+                </div>
+
+                <footer>
+                    <br><br>
+                    <p>Desarrollado por Manuel Calderón - Desarrollador Web
+                        <br/>Siguenos en nuestras redes</p>
+                </footer>
+
+            </main>
+
+
+        </div>        
+    </body>
+    <script src="libs/script.js"></script>
+</html>

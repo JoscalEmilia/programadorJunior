@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form method="post" action="">
+        <input type="text" name="Nombre">
+        <input type="text" name="Apellidos">
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
+
+Método POST
+No se visualizan en la URL pero si se recarga la página, este preguntará si debe reenviar los datos.
+
+
+<script>
+    const valores = window.location.search;
+
+//Mostramos los valores en consola:
+console.log(valores);
+
+//Resultado:
+//producto=camiseta&color=azul&talla=s
+
+//Creamos la instancia
+const urlParams = new URLSearchParams(valores);
+
+//Accedemos a los valores
+var producto = urlParams.get('producto');
+
+//Verificar si existe el parámetro
+console.log(urlParams.has('producto'));
+
+//Puedes recorrer los valores, claves y pares completos.
+const
+  keys = urlParams.keys(),
+  values = urlParams.values(),
+  entries = urlParams.entries();
+
+for (const value of values) console.log(value);
+//camiseta, azul, s
+</script>

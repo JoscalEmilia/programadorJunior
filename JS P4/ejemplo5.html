@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Libreria de CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <script src="jquery.min.js"></script>
+
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="row mt-5">
+
+            <div class="col-6">
+
+                <table class="table table-bordered">
+                    <tr><th colspan="2"> Añadir Propiedad al Objeto </th></tr>
+                    <tr>
+                        <td>Nombre de Propiedad:</td>
+                        <td><input id="propiedad" class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Valor de Propiedad:</td>
+                        <td><input id="valor" class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button id="AddtoObject" class="btn btn-primary">Añadir Propiedad al Objeto</button>
+                            <button id="ViewObject" class="btn btn-success">Mostrar Propiedades</button>
+                        </td>
+                    </tr>                  
+                    <tr>
+                        <td colspan="2">
+                            <button id="DeleteFromObject" class="btn btn-danger">Eliminar Propiedad</button>
+                            <button id="UpdateFromObject" class="btn btn-info">Actualizar Propiedad</button>
+                        </td>
+                    </tr>                    
+                </table>    
+                
+                <div id="ObjetoString">
+                </div>
+                
+
+            </div>
+
+            <div class="col-6">
+                <textarea class="form-control" id="JsonString"></textarea> <br />
+                
+                <button class="btn btn-primary" id="JsonToObject">Convertir de Json a Objeto de Javascript</button>                
+                <br><br>
+                <button id="ObjectToJson" class="btn btn-primary">Convertir de Objeto de Javascript a Json</button>
+                <br><br>
+                <button id="Clear" class="btn btn-warning">Limpiar datos</button>
+            </div>
+
+        </div>
+
+    </div>
+    
+    <script>
+        var JsonToObject = document.getElementById("JsonToObject");        
+        var ObjectToJson = document.getElementById("ObjectToJson");
+
+        var ObjetoString = document.getElementById("ObjetoString");
+        var AddtoObject = document.getElementById("AddtoObject");
+        var Clear = document.getElementById("Clear");
+        var ViewObject = document.getElementById("ViewObject");
+        var DeleteFromObject = document.getElementById("DeleteFromObject");
+        var UpdateFromObject = document.getElementById("UpdateFromObject");
+
+        // Objeto Inicializado
+        var Objeto = {};
+        
+        
+        
+        JsonToObject.addEventListener('click', ConvertirJsonToObject);
+        ObjectToJson.addEventListener('click', ConvertirObjectToJson);
+        
+        Clear.addEventListener('click', ClearData);
+        ViewObject.addEventListener('click', MostrarObjeto)
+        
+        AddtoObject.addEventListener('click', AñadirPropiedadAObjeto);
+        DeleteFromObject.addEventListener('click', EliminarPropiedad)
+        UpdateFromObject.addEventListener('click', ActualizarPropiedad)
+
+
+        function ConvertirJsonToObject()
+        {
+            Objeto = JSON.parse($("#JsonString").val());
+            MostrarObjeto()
+        }
+
+        function ConvertirObjectToJson()
+        {
+            // Enviamos el valor del convertido a Json al textarea con ID JsonString
+            $("#JsonString").val(JSON.stringify(Objeto))
+        }        
+
+
+
+        function AñadirPropiedadAObjeto()
+        {
+            // Nueva propiedad a Objeto
+            // Objeto['Nombre de la Nueva Propiedad'] = 'Añadir el nuevo Valor'
+
+            Objeto[$("#propiedad").val()] = $("#valor").val()
+            MostrarObjeto()
+        }
+
+        function EliminarPropiedad()
+        {
+            delete Objeto[$("#propiedad").val()]; 
+            MostrarObjeto();
+        }
+
+        function ActualizarPropiedad()
+        {
+            Objeto[$("#propiedad").val()] = $("#valor").val(); 
+            MostrarObjeto();
+        }        
+
+        function ClearData()
+        {
+            if(confirm("Confirmar acción de limpiar datos"))
+            {
+                for(Key in Objeto)                  
+                    delete Objeto[Key]                    
+
+                $("#JsonString").val("")
+                ObjetoString.innerHTML = "";
+
+                MostrarObjeto();
+            }
+        }
+
+        function MostrarObjeto()
+        {
+            // Limpiamos el div para mostrar las propiedades del objeto
+            ObjetoString.innerHTML = "Total de Propiedades: " + Object.keys(Objeto).length;
+            
+            // Recorremos todas las propiedades del objeto
+            for(Key in Objeto)
+            {
+                ObjetoString.innerHTML += "<br/>" + Key + ": " + Objeto[Key] ;
+            }
+        }
+
+    </script>
+
+</body>
+</html>

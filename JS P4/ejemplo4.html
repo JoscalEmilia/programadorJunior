@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        var persona = {
+            Nombre : "Paula Emilia",
+            Apellidos: "Calderón Pérez", 
+            Sexo : "Mujer",
+            Edad : "1 mes"
+        };
+
+        document.write(persona.Nombre + " " + persona.Apellidos + "<br />");
+
+        var MyJson = JSON.stringify(persona);
+        document.write(MyJson+ "<br />")
+
+        persona['Departamento'] = "San Salvador"
+        document.write(persona.Departamento+ "<br />")
+
+        
+    </script>
+</body>
+</html>

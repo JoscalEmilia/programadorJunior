@@ -1,0 +1,59 @@
+p {
+    color: tomato;
+    text-align: center;
+    font-size: 35px;
+}
+
+body
+{
+    font-family: Calibri;
+}
+#content, footer
+{
+    margin-left: -10px;
+    margin-top: -10px;
+    margin-right: -10px;
+}
+header
+{
+    height: 20vh;
+    background-color: blueviolet;
+}
+
+footer
+{
+    height: 20vh;
+    background-color: darkcyan;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+header p
+{
+    color: white;
+    font-size: 48px;
+    margin: 0px;
+    padding-top: 30px;
+    padding-left: 5%;
+}
+
+aside
+{
+    background-color: tomato;
+    width: 33%;
+    float: left;
+}
+
+section
+{
+    background-color: blue;
+    width: 33%;
+    float: left;
+}       
+
+
+#menu
+{
+    width: 33%;
+    float: left;
+}

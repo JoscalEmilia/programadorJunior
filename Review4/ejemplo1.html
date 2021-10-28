@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Control de Inventario</h2>
+
+    
+    <button type="button" id="Addview" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Añadir al Inventario
+    </button>
+
+    <div class="row mt-4">
+        
+        <div class="col-8">
+            <table id="tableInventary" class="table table-bordered table-hover">
+                <tr>
+                    <th>ID</th>
+                    <th>Descripción</th>
+                    <th>Valor</th>
+                    <th>Acciones</th>
+                </tr>
+            </table>
+        </div>
+        <div class="col-4">
+            <table class="table table-bordered table-hover">
+                <tr><th>Detalle de Inventario</th></tr>
+                <tr><td><b>Total de Elementos:</b> <p id="totalItems"></p></td></tr>
+                <tr><td><b>Total de Costo: </b><p id="totalCosto"></p></td></tr>
+            </table>    
+            
+        </div>
+
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+        <div class="modal-content">
+        
+            <!-- Modal Header -->
+            <div class="modal-header">
+            <h4 class="modal-title">Formulario</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="txt1">Descripción:</label>
+                    <input type="text" class="form-control" id="txt1">
+                </div>
+                <div class="form-group">
+                    <label for="txt2">Valor:</label>
+                    <input type="number" step="0.01" class="form-control" id="txt2">
+                </div>                
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="action btn btn-primary" onclick="AddItem()" >Añadir</button>
+                <button type="button" class="action btn btn-primary" onclick="UpdateItem()" style="display: none;" >Actualizar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+            
+        </div>
+        </div>
+    </div>
+  
+</div>
+
+<script>
+
+    // Tabla de Inventario
+    var table = document.getElementById('tableInventary');
+    var nCount = 0;
+
+    // Elementos del Formulario
+    var txt1 = document.getElementById('txt1');
+    var txt2 = document.getElementById('txt2');
+
+    // Elementos de Consolidado
+    var totalI = document.getElementById('totalItems');
+    var totalC = document.getElementById('totalCosto');
+
+    // Variable para almacenar el elemento TR a Editar
+    var trUpdate;
+    document.getElementById("Addview").addEventListener("click", function(){
+        btn = document.getElementsByClassName("action");
+        btn[0].style.display = 'inline';
+        btn[1].style.display = 'none';
+    });
+
+    function AddItem()
+    {
+        if(txt1.value != "" && txt2.value != "")
+        {
+            nCount++;
+
+            let tr = document.createElement("tr");
+            let td1 = document.createElement("td");
+            let td2 = document.createElement("td");
+            let td3 = document.createElement("td");
+            let td4 = document.createElement("td");
+            let ad = document.createElement("a");
+            let au = document.createElement("a");
+
+            td3.setAttribute("class", "Valor")
+            ad.setAttribute("onclick", "DeleteItem(this)");
+            au.setAttribute("onclick", "UpdateItemView(this)");            
+            au.setAttribute("data-toggle", "modal")
+            au.setAttribute("data-target", "#myModal")            
+
+            td1.textContent = nCount;
+            td2.textContent = txt1.value;
+            td3.textContent = txt2.value;
+
+            ad.textContent = "Eliminar";
+            au.textContent = "Editar";
+
+            td4.append(ad);
+            td4.append(" - ");
+            td4.append(au);
+            
+            tr.append(td1);
+            tr.append(td2);
+            tr.append(td3);
+            tr.append(td4);
+
+            table.append(tr);
+            $("#myModal").modal("hide");
+            UpdateData();
+
+            txt1.value = '';
+            txt2.value = '';
+        }
+        else
+        {
+            alert("Debe llenar ambos campos")
+        }
+    }
+
+    function DeleteItem(a)
+    {
+        if(confirm("¿Seguro que desea Eliminar este Elemento?"))
+        {
+            td = a.parentNode;
+            tr = td.parentNode;
+            tr.remove();
+
+            UpdateData();
+        }
+    }
+
+    function UpdateItemView(a)
+    {
+        btn = document.getElementsByClassName("action");
+        btn[0].style.display = 'none';
+        btn[1].style.display = 'inline';
+
+        td = a.parentNode;
+        tr = td.parentNode;
+   
+        txt1.value = tr.children[1].textContent;
+        txt2.value = tr.children[2].textContent;
+        
+        trUpdate = tr;
+    }
+
+    function UpdateItem()
+    {
+        trUpdate.children[1].textContent = txt1.value;
+        trUpdate.children[2].textContent = txt2.value;
+
+        UpdateData();
+        $("#myModal").modal("hide");
+    }
+
+    function UpdateData()
+    {        
+        let Totales = document.getElementsByClassName("Valor");
+        let SumTotal = 0;
+
+        for (let i = 0; i < Totales.length; i++)         
+            SumTotal += Number(Totales[i].textContent);   
+        
+        totalI.innerHTML = ($("#tableInventary tr").length-1);
+        totalC.innerHTML = "$"+SumTotal;
+    }
+
+
+</script>
+
+</body>
+</html>

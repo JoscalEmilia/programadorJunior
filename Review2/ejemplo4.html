@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Libreria de CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    table
+    {
+        width: 80%;
+
+        margin-top: 10vh;        
+    }
+
+    td
+    {
+        text-align: center;
+    }
+</style>
+<body>
+    
+    <script>
+
+    var num = Number(prompt("Numero de Tabla"));
+    
+    document.write("<table class='table table-bordered table-hover'>")
+    for(i = 1; i <= num; i++)
+    {   
+        if((i%3) == 1) 
+            document.write("<tr>")
+    
+        document.write("<td>");  
+        document.write("Tabla del " + i)
+        
+        //for(j = 1; j <= 10; j++)
+        //{
+            //la tablaaa 
+        //}
+        
+        document.write("</td>");
+
+        if((i%3) == 0) 
+            document.write("</tr>")
+    }
+    document.write("</table>")
+
+    </script>
+
+</body>
+</html>

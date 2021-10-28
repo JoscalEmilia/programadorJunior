@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form method="get" action="">
+        <input type="text" name="Nombre">
+        <input type="text" name="Apellido">
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
+
+Método GET
+? Nombre=José+Manuel & Apellido=Calderón+González
+
+<script>
+
+const valores = window.location.search;
+
+//Creamos la instancia
+const urlParams = new URLSearchParams(valores);
+
+//Accedemos a los valores
+var Nombre = urlParams.get('Nombre');
+var Apellido = urlParams.get('Apellido');
+
+document.write("<br/><br/> Nombre: "+ Nombre + " <br/> Apellido: " + Apellido)
+
+</script>

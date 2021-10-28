@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+    table
+    {
+        margin-top: 10%;
+        margin-left: 10%;
+    }
+
+    td
+    {
+        width: 50px;
+        padding: 5px;
+        text-align: center;
+        font-family: calibri;
+    }
+
+    button
+    {
+        width: 40px;
+        height: 40px;
+    }
+
+    input
+    {
+        width: 100%;
+    }
+
+</style>
+<body>
+    <table>
+        <tr>
+            <td colspan="4">
+                Calculadora Virtual
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <input type="text" id="resultado" />
+                <input type="hidden" id="numero1" />
+                <input type="hidden" id="numero2" />
+                <input type="hidden" id="operador" />
+            </td>
+        </tr>        
+        <tr>
+            <td><button onclick="Resolver(this)" value="7">7</button></td>
+            <td><button onclick="Resolver(this)" value="8">8</button></td>
+            <td><button onclick="Resolver(this)" value="9">9</button></td>
+            <td><button onclick="Operar(this)" value="dividir">/</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="Resolver(this)" value="4">4</button></td>
+            <td><button onclick="Resolver(this)" value="5">5</button></td>
+            <td><button onclick="Resolver(this)" value="6">6</button></td>
+            <td><button onclick="Operar(this)" value="multiplicar">*</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="Resolver(this)" value="1">1</button></td>
+            <td><button onclick="Resolver(this)" value="2">2</button></td>
+            <td><button onclick="Resolver(this)" value="3">3</button></td>
+            <td><button onclick="Operar(this)" value="restar">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="Calcular()">=</button></td>
+            <td><button onclick="Resolver(this)" value="0">0</button></td>
+            <td><button onclick="Limpiar()">CE</button></td>
+            <td><button onclick="Operar(this)" value="sumar">+</button></td>
+        </tr>                        
+    </table>
+
+    <script>
+        function Resolver(num)
+        {
+            var numero1 = document.getElementById("numero1");
+            var numero2 = document.getElementById("numero2");
+            var resultado = document.getElementById("resultado");
+            var operador = document.getElementById("operador");
+            
+            if(numero1.value == "")
+            {
+                numero1.value = num.value;        
+            }                
+            else if(operador.value == "")
+            {
+                numero1.value = numero1.value + num.value;
+            }
+                
+            else if(operador.value != "")
+            {
+                numero2.value = numero2.value + num.value;                
+            }
+            
+            resultado.value = numero1.value + operador.value + numero2.value;
+            
+        }
+
+        function Operar(op)
+        {
+            var operador = document.getElementById("operador");
+            var resultado = document.getElementById("resultado");
+            
+            if(operador.value != "")            
+                resultado.value = resultado.value.substring(0, resultado.value.length-1);            
+
+            var signo;
+            signo = (op.value == "sumar") ? "+" : "" ;
+            signo = (op.value == "restar") ? "-" : signo ;
+            signo = (op.value == "multiplicar") ? "*" : signo ;
+            signo = (op.value == "dividir") ? "/" : signo ;
+            operador.value = signo;
+
+            resultado.value = numero1.value + operador.value + numero2.value;
+
+        }
+
+        function Limpiar()
+        {
+            document.getElementById('resultado').value = "";
+            document.getElementById('numero1').value = "";
+            document.getElementById('numero2').value = "";
+            document.getElementById('operador').value = "";
+        }
+
+        function Calcular()
+        {
+            var resultado = document.getElementById('resultado');
+            var numero1 = document.getElementById('numero1');
+            var numero2 = document.getElementById('numero2'); 
+            var operador = document.getElementById('operador');
+
+            if(operador.value == "+")
+                resultado.value = Number(numero1.value) + Number(numero2.value);
+            
+            else if(operador.value == "-")
+                resultado.value = numero1.value - numero2.value;
+
+            else if(operador.value == "*")
+                resultado.value = numero1.value * numero2.value;
+
+            else if(operador.value == "/")
+                resultado.value = numero1.value / numero2.value;
+            
+            numero1.value = resultado.value;            
+            numero2.value = ""; 
+            operador.value = "";
+        }        
+    </script>
+
+</body>
+</html>

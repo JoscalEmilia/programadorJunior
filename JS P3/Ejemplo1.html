@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="jquery.min.js"></script>
+
+</head>
+<body>
+    
+    <p id="Parrafo">Hola mundo 3</p>
+    
+    <button id="btn">Esconder o Ver!</button>
+
+    <script>
+
+    $(document).ready(function(){
+
+        $("#btn").click(function() {
+            $("#Parrafo").toggle()  
+        });
+
+        $("p").click(function() {
+            $(this).toggle()  
+        });        
+
+    })
+
+    </script>
+
+    <p>Hola 1</p>
+    <p>Hola 2</p>
+    <p>Hola 3</p>
+
+    <p onclick="$(this).hide(3000)">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis molestiae quaerat quasi id? Ut harum voluptates labore deleniti non dolorum aliquam iure, deserunt voluptatibus, accusamus provident reiciendis nulla voluptate excepturi.        
+    </p>
+</body>
+</html>

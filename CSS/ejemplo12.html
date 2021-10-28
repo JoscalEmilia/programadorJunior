@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        
+    /* The animation code */
+        @keyframes example {
+            from 
+            {
+                background-color: royalblue;
+            }
+
+            to 
+            {
+                background-color: yellow;
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        /* The element to apply the animation to */
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        div:hover
+        {            
+            animation-name: example;
+            animation-duration: 4s;
+        }
+    </style>
+
+    <div>.</div>
+
+</body>
+</html>

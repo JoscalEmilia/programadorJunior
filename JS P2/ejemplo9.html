@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        .ball
+        {
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            border-radius: 12.5px;
+
+            background-color: tomato;
+        }
+    </style>
+
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+
+    <button onclick="clearInterval(Mover)">Parar Bolas</button>
+
+    <script>
+
+        //Espera que se acaben los milisegundos del segundo paramento para 
+        //ejecutar la función del primer parametro
+
+        setTimeout(Bienvenida, 3000);
+        function Bienvenida()
+        {
+            alert("Bienvenido al Curso")
+        }
+
+        var balls = document.getElementsByClassName("ball");
+        function MoverCirculo()
+        {
+            for(var i = 0; i <= balls.length; i++)
+            {
+                balls[i].style.top = aleatorio(0, window.innerHeight) + "px";            
+                balls[i].style.left = aleatorio(0, window.innerWidth ) + "px";
+            }
+
+        }
+
+        var Mover = setInterval(MoverCirculo, 500);
+
+        function aleatorio(inferior, superior) 
+        {
+            var numPosibilidades = superior - inferior;
+            var aleatorio = Math.random() * (numPosibilidades + 1);
+            aleatorio = Math.floor(aleatorio);
+            return inferior + aleatorio;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /** Nombres de mis carros **/       
+        var cars = ["Saab", "Volvo", "BMW", "Hyundai", "Toyota", "Honda", "Kia"];
+        var TotalCarros = cars.length;
+
+        var opcion = prompt("¿Que marcar de carro quiere conocer?")
+        if(opcion >= 0 && opcion < TotalCarros)
+            document.writeln("El carro es: "+ cars[opcion]);
+
+        else if (opcion == "Lista")
+        {
+            text = "<ul>";
+            cars.forEach(myFunction);
+            text += "</ul>";
+            
+            function myFunction(value) {
+            text += "<li>" + value + "</li>";
+            }   
+            
+            document.write(text);
+        }
+
+        else    
+            document.writeln("Numero incorrecto");
+
+
+
+
+     
+
+
+    </script>
+</body>
+</html>

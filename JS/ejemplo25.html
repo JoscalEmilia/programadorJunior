@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var eventoControlado = false;
+        window.onload = function() 
+        { 
+            document.onkeypress = mostrarInformacionCaracter;
+            document.onkeyup = mostrarInformacionTecla; 
+        }
+
+        function mostrarInformacionCaracter(e) 
+        {
+            var msg = ''; 
+            var elCaracter = String.fromCharCode(e.which);
+            
+            if (e.which!=0 && e.which!=13) 
+            {
+                msg = 'Tecla pulsada: ' + elCaracter;
+                control.innerHTML += msg + '-----------------------------<br/>'; 
+            }
+            else 
+            { 
+                msg = 'Pulsada tecla especial';
+                control.innerHTML += msg + '-----------------------------<br/>';
+            }
+            eventoControlado=true;
+        }
+
+        function mostrarInformacionTecla(e) 
+        {
+            var msg = ''; 
+            var teclaPulsada = e.keyCode;
+            if (teclaPulsada == 20) 
+            { 
+                msg = 'Pulsado caps lock (act/des mayúsculas)';
+            }
+            else if (teclaPulsada == 16) 
+            { 
+                msg = 'Pulsado shift';
+            }
+            else if (eventoControlado == false) 
+            { 
+                msg = 'Pulsada tecla especial';
+            }
+            if (msg) 
+            {
+                control.innerHTML += msg + '-----------------------------<br/>';
+            }
+            eventoControlado = false;
+        }        
+    </script>
+    <div id="cabecera"><h2>Cursos aprenderaprogramar.com</h2><h3>Ejemplo JavaScript: pulse una tecla</h3></div>
+
+    <div id="control"> </div>
+</body>
+</html>

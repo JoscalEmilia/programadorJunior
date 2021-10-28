@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    form
+    {
+        font-family: Calibri;
+        background-image: linear-gradient(white, tomato);
+        background-size: cover;
+        border-radius: 10px;
+        padding: 10px;
+    }
+</style>
+<body>
+    <form style="width: 50%;">
+        <h1>Formulario de Registro</h1>
+        <hr />
+        <p><b>Nombre del Participante:</b></p>
+        <input type="text" name="Fullname" value="José González" />       
+
+        <p><b>Correo:</b></p>
+        <input type="email" name="email" />       
+
+        <p><b>Edad:</b></p>
+        <input type="number" name="age" min="0" step="0.1" />       
+
+        <p><b>Nivel:</b></p>
+        <input type="range" name="level" min="0" max="10" onchange="document.getElementById('level').innerHTML=this.value" />       
+        <label id="level"></label>
+        
+        <hr/>
+        <input type="submit" value="Enviar Datos">        
+    </form>
+</body>
+</html>
